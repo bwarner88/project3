@@ -7,6 +7,13 @@ module.exports = (sequelize, DataTypes) => {
                 isEmail: true
             }
         },
+        location: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validation: {
+                len: [5]
+            }
+        },
         itemName: {
             type: DataTypes.STRING,
             allowNull: false,
