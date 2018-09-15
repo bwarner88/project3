@@ -27,12 +27,12 @@ module.exports = (sequelize, DataTypes) => {
             default: Date.now,
             allowNull: false
         },
-    //     isAvailable: {
-    //         type: DataTypes.BOOLEAN,
-    //         allowNull: false,
-    //         default: true
-    //     }
-    // });
+        isAvailable: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            default: true
+        }
+    });
 
     Item.associate = (models) => {
 
