@@ -34,9 +34,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
+
+    /**JOINS TO USER TABLE */
     Item.associate = (models) => {
 
-        // PLAYER-USER ASSOCIATIONS
+        // ITEM-USER ASSOCIATION
         Item.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false

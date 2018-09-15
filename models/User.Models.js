@@ -28,8 +28,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
+
+    /**JOIN TO ITEM TABLE */
     User.associate = function (models) {
 
+        //USER-ITEM ASSOCIATION
         User.hasMany(models.Item, {
             onDelete: 'cascade'
         }); // END JOIN 
