@@ -37,7 +37,20 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'cascade'
         }); // END JOIN 
 
+        // USER HAS MANY ITEMS THROUGH REQUEST 
+        User.hasMany(models.Request, {
+            onDelete: 'cascade'
+        });
 
+        // USER HAS MANY ITEMS THROUGH TRANSACTION
+        User.hasMany(models.Transaction, {
+            onDelete: 'cascade'
+        });
+
+        // USER HAS MANY ITEMS THROUGH USER-REVIEW
+        User.hasMany(models.UserReview, {
+            onDelete: 'cascade'
+        });
     }
 
     return User;

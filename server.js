@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 // const routes = require("./routes");
-const db = require("./models");
-const routes = require("./controllers/controller.js");
+const db = require("./app_api/models");
+const routes = require("./app_api/routes/index.routes");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -17,7 +17,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("client/build"));
 
 // ROUTING FOR API
-app.use(routes);
+app.use("/api", routes);
 
 
 db.Sequelize.sync({ force: true }).then(function () {

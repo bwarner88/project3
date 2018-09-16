@@ -1,12 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     const Item = sequelize.define("Item", {
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validation: {
-                isEmail: true
-            }
-        },
         location: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -38,14 +31,47 @@ module.exports = (sequelize, DataTypes) => {
     /**JOINS TO USER TABLE */
     Item.associate = (models) => {
 
+        // Item.hasMany(models.Transaction, {
+        //     foriegnKey: {
+        //         allowNull: true
+        //     }
+        // });
+
+        // Item.hasMany(models.Request, {
+        //     foriegnKey: {
+        //         allowNull: true
+        //     }
+        // });
+
         // ITEM-USER ASSOCIATION
         Item.belongsTo(models.User, {
-            foreignKey: {
+            foriegnKey: {
                 allowNull: false
             }
         });
 
-    }
+         
+        // ITEM BELONGS TO MANY USER THROUGH REQUEST
+        Item.belongsTo(models.Request, {
+            foriegnKey: {
+                allowNull: true
+            }
+        });
+        
+        // ITEM BELONGS TO MANY USER THROUGH TRANSACTION
+        Item.belongsTo(models.Transaction, {
+            foriegnKey: {
+                allowNull: true
+            }
+        });
+        
+        // ITEM BELONGS TO MANY USER THROUGH ITEM-REVIEW
+        Item.belongsTo(models.ItemReview, {
+            foriegnKey: {
+                allowNull: true
+            }
+        });
+    };
 
 
 
