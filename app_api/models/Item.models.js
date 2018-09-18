@@ -31,6 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     /**JOINS TO USER TABLE */
     Item.associate = (models) => {
 
+//NOT SURE WHY THIS DOESN'T WORK
+
         // Item.hasMany(models.Transaction, {
         //     foriegnKey: {
         //         allowNull: true
