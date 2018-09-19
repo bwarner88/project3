@@ -15,22 +15,22 @@ module.exports = (sequelize, DataTypes) => {
     });
 /**JOINS TO USER AND ITEM TABLE */
 
-// Request.associate = (models) => {
+Request.associate = (models) => {
 
-//     //REQUEST BELONGS TO MANY USERS 
-//     Request.hasMany(models.User, {
-//         foriegnKey: {
-//             allowNull: true
-//         }
-//     });
+    //REQUEST BELONGS TO MANY USERS 
+    Request.belongsTo(models.User, {
+        foriegnKey: {
+            allowNull: true
+        }
+    });
 
-//     //REQUEST BELONGS TO MANY ITEMS 
-//     Request.hasMany(models.Item, {
-//         foriegnKey: {
-//             allowNull: true
-//         }
-//     });
-// };
+    //REQUEST BELONGS TO MANY ITEMS 
+    Request.hasMany(models.Item, {
+        foriegnKey: {
+            allowNull: true
+        }
+    });
+};
 
     return Request;
 }
