@@ -15,23 +15,23 @@ module.exports = (sequelize, DataTypes) => {
     });
 
 
-    //**JOINS TO USER AND ITEM TABLE */
-//     Transaction.associate = (models) => {
+    // **JOINS TO USER AND ITEM TABLE */
+    Transaction.associate = (models) => {
 
-//         //TRANSACTION BELONGS TO MANY USERS
-//     Transaction.belongsTo(models.User, {
-//         foriegnKey: {
-//             allowNull: true
-//         }
-//     });
+        //TRANSACTION BELONGS TO MANY USERS
+    Transaction.belongsTo(models.User, {
+        foriegnKey: {
+            allowNull: true
+        }
+    });
 
-//     //TRANSACTION BELONGS TO MANY ITEMS
-//     Transaction.belongsTo(models.Item, {
-//         foriegnKey: {
-//             allowNull: true
-//         }
-//     });
-// };
+    //TRANSACTION BELONGS TO MANY ITEMS
+    Transaction.belongsTo(models.Item, {
+        foriegnKey: {
+            allowNull: true
+        }
+    });
+};
 
     return Transaction;
 };

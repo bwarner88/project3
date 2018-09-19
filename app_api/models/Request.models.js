@@ -1,36 +1,32 @@
 module.exports = (sequelize, DataTypes) => {
     const Request = sequelize.define("Request", {
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        itemName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
-    });
-/**JOINS TO USER AND ITEM TABLE */
 
-Request.associate = (models) => {
-
-    //REQUEST BELONGS TO MANY USERS 
-    Request.belongsTo(models.User, {
-        foriegnKey: {
-            allowNull: true
-        }
     });
+    /**JOINS TO USER AND ITEM TABLE */
 
-    //REQUEST BELONGS TO MANY ITEMS 
-    Request.hasMany(models.Item, {
-        foriegnKey: {
-            allowNull: true
-        }
-    });
-};
+    Request.associate = (models) => {
+
+        //REQUEST BELONGS TO MANY USERS 
+        Request.belongsTo(models.User, {
+            as: "Owner",
+            foriegnKey: {
+                allowNull: true
+            }
+        });
+        Request.belongsTo(models.User, {
+            as: "Requestor",
+            foriegnKey: {
+                allowNull: true
+            }
+        });
+
+        //REQUEST BELONGS TO MANY ITEMS 
+        Request.belongsTo(models.Item, {
+            foriegnKey: {
+                allowNull: true
+            }
+        });
+    };
 
     return Request;
 }

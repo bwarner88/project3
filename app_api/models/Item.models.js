@@ -2,27 +2,27 @@ module.exports = (sequelize, DataTypes) => {
     const Item = sequelize.define("Item", {
         location: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             validation: {
                 len: [5]
             }
         },
-        itemName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        // itemName: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true,
+        // },
         description: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         date: {
             type: DataTypes.DATE,
             default: Date.now,
-            allowNull: false
+            allowNull: true
         },
         isAvailable: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
             default: true
         }
     });
@@ -54,14 +54,14 @@ module.exports = (sequelize, DataTypes) => {
 
          
         // ITEM BELONGS TO MANY USER THROUGH REQUEST
-        Item.belongsTo(models.Request, {
+        Item.hasMany(models.Request, {
             foriegnKey: {
                 allowNull: true
             }
         });
         
         // ITEM BELONGS TO MANY USER THROUGH TRANSACTION
-        Item.belongsTo(models.Transaction, {
+        Item.hasMany(models.Transaction, {
             foriegnKey: {
                 allowNull: true
             }
