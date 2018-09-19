@@ -18,14 +18,14 @@ module.exports = (sequelize, DataTypes) => {
 // Request.associate = (models) => {
 
 //     //REQUEST BELONGS TO MANY USERS 
-//     Request.belongsTo(models.User, {
+//     Request.hasMany(models.User, {
 //         foriegnKey: {
 //             allowNull: true
 //         }
 //     });
 
 //     //REQUEST BELONGS TO MANY ITEMS 
-//     Request.belongsToMany(models.Item, {
+//     Request.hasMany(models.Item, {
 //         foriegnKey: {
 //             allowNull: true
 //         }
