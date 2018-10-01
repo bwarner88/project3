@@ -7,14 +7,22 @@ module.exports = (sequelize, DataTypes) => {
                 len: [5]
             }
         },
+        itemName: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
+        image: {
+            type: DataTypes.TEXT,
             allowNull: true
         },
         date: {
             type: DataTypes.DATE,
             default: Date.now,
-            allowNull: true
+            allowNull: true 
         },
         isAvailable: {
             type: DataTypes.BOOLEAN,
@@ -26,6 +34,8 @@ module.exports = (sequelize, DataTypes) => {
 
     /**JOINS TO USER TABLE */
     Item.associate = (models) => {
+
+//NOT SURE WHY THIS DOESN'T WORK
 
         // ITEM-USER ASSOCIATION
         Item.belongsTo(models.User, {
@@ -50,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
         });
         
         // ITEM BELONGS TO MANY USER THROUGH ITEM-REVIEW
-        Item.hasMany(models.ItemReview, {
+        Item.belongsTo(models.ItemReview, {
             foriegnKey: {
                 allowNull: true
             }
