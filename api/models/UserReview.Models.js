@@ -17,14 +17,5 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    UserReview.associate = (models) => {
-
-        Item.belongsTo(models.User, {
-            foriegnKey: {
-                allowNull: false
-            }
-        });
-    };
-
     return UserReview;
 };
